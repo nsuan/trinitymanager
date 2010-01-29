@@ -1,0 +1,24 @@
+<?php
+
+
+class SQL {
+
+     function connect($host,$user,$pass,$name)
+     {
+          $connect = mysql_connect($host,$user,$pass,$name);
+          return $connect;
+     }
+
+     function query($query) 
+     {
+          $return = mysql_query($query);
+          return $return;
+     }
+
+     function num_rows($numrows)
+     {
+          $rows = mysql_num_rows($numrows);
+          return $rows;
+     }
+}
+?>
