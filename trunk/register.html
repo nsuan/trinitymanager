@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TrinityManager</title>
+
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+		<div class="header_big">TrinityManager
+		<div class="header_small">Account Management System</div></div>
+		</div>
+		<div class="main">
+			<div class="leftmenu">
+				<div class="menu">
+				<ul>
+				<li><a href="login.php">Login</a></li>
+				<li><a href="register.php">Register</a></li>
+				<li><a href="">Account info</a></li>
+				<li><a href="">Creature list</a></li>
+				</ul>
+				</div>
+			</div>
+			<div class="content center_left">
+				<div class="contentbox">
+					<h1>Register a new account</h1>
+						<form method="post" action="register.php">
+							<label for="uname" class="login">Username:</label>
+							<br /><input type="text" name="uname" id="uname" /> 
+							Minimum Length: 4 | Maximum Length: 14<br />
+							<label for="pass" class="login">Password:</label>
+							<br /><input type="password" id="pass" name="pass" /><br />
+							<label for="confpass" class="login">Confirm Password:</label>
+							<br /><input type="password" id="confpass" name="confpass" /> 
+							Minimum Length: 4 | Maximum Length: 14<br />
+							<label for="email" class="login">Email:</label>
+							<br /><input type="password" id="email" name="email" /> 
+							Valid E-Mail Address Required<br />
+							<br />
+							<select name="expansion">
+							  <option>Classic</option>
+							  <option>TBC</option>
+							  <option>WOTLK</option>
+							</select> 
+							Account Type<br /> <br />
+							<input type="textbox" name="captcha" /> 
+							Captcha Image<br />
+							<br />
+							<input type="hidden" name="register" value="1" />
+							<input type="submit" value="Register" />
+						  </p>
+						</form>
+				</div>
+			</div>
+		</div>
+<div class="footer">
+		Page generated in 0.0003 seconds <br /> TrinityManager v0.1
+</div>
+</body>
+</html>
