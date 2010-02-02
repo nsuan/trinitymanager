@@ -23,48 +23,44 @@
 							<li><a href="pages.html">Pages</a></li>
 						</ul>
 					</li>
-					<li> Menu 2</li>
+					<li> Menu 2
 						<ul>
 							<li><a href="">Item 1</a></li>
 							<li><a href="">Item 2</a></li>
 						</ul>
+					</li>
 				</ul>
 				</div>
 			</div>
 			<div class="content center_left">
 				<div class="contentbox">
-					<h1>Register a new account</h1>
+					<div class="contentbox_title"><h1>Register</h1></div>
+					<div class="contentbox_body">
 						<form method="post" action="register.php">
-							<label for="uname" class="login">Username:</label>
-							<br /><input type="text" name="uname" id="uname" /> 
-							Minimum Length: 4 | Maximum Length: 14<br />
-							<label for="pass" class="login">Password:</label>
-							<br /><input type="password" id="pass" name="pass" /><br />
-							<label for="confpass" class="login">Confirm Password:</label>
-							<br /><input type="password" id="confpass" name="confpass" /> 
-							Minimum Length: 4 | Maximum Length: 14<br />
-							<label for="email" class="login">Email:</label>
-							<br /><input type="password" id="email" name="email" /> 
-							Valid E-Mail Address Required<br />
-							<br />
+							<label for="uname" class="login">Username:</label><br />
+							<input type="text" name="uname" id="uname" /> Minimum Length: 4 | Maximum Length: 14<br />
+							<label for="pass" class="login">Password:</label><br />
+							<input type="password" id="pass" name="pass" /><br />
+							<label for="confpass" class="login">Confirm Password:</label><br />
+							<input type="password" id="confpass" name="confpass" /> Minimum Length: 4 | Maximum Length: 14<br />
+							<label for="email" class="login">Email:</label><br />
+							<input type="password" id="email" name="email" /> Valid E-Mail Address Required<br /><br />
 							<select name="expansion">
 							  <option>Classic</option>
 							  <option>TBC</option>
 							  <option>WOTLK</option>
-							</select> 
-							Account Type<br /> <br />
-							<input type="textbox" name="captcha" /> 
-							Captcha Image<br />
-							<br />
+							</select> Account Type<br /><br />
+							<input type="text" name="captcha" /> Captcha Image<br /><br />
 							<input type="hidden" name="register" value="1" />
 							<input type="submit" value="Register" />
-						  </p>
 						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-<div class="footer">
-		Page generated in 0.0003 seconds <br /> TrinityManager v0.1
-</div>
+		<div class="footer">
+		TrinityManager v0.1
+		</div>
+	</div>
 </body>
 </html>
