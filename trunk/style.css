@@ -14,7 +14,6 @@ div.header{
 }
 div.main{
 	margin: 10px 10px 0px;
-	min-height: 400px; _height: 400px;
 }
 div.leftmenu{
 	float: left;
@@ -48,7 +47,6 @@ div.menu{
 div.contentbox{
 	margin-left: 15px; 
 	margin-bottom: 10px;
-	padding: 10px 20px;
 	background-color: #E6E6E6; 
 	border: 1px solid #CCCACA; 
 }
@@ -70,16 +68,36 @@ div.footer{
 	border-top: 1px solid #CCCACA;
 	background-color: #E6E6E6;
 }
-.contentbox h1{
-	font-size:13px;
-	margin-top: 0px;
-}
+
 div.contentbox_title{
+	font-size:13px;
+	padding: 5px 10px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 0px;
+	border-bottom: 1px solid #CCCACA;
 }
 div.contentbox_body{
+	padding: 10px 10px;
 }
-#error{
-	color: #F00;
+
+div.statusmessage{
+	
+	text-transform: uppercase;
+	padding: 10px 5px;
+	margin: 5px 0px;
 	font-weight: bold;
-	font-size: 16px;
+	border: 1px solid;
+
+}
+.failure{
+	color: #F00;
+}
+.success{
+	color:green;
+}
+.neutral{
+}
+img.footer {
+margin-top: 5px;
 }
