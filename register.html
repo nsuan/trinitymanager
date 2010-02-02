@@ -1,10 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>TrinityManager</title>
-
-<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>TrinityManager</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="all" />
 </head>
 
 <body>
@@ -34,8 +33,11 @@
 			</div>
 			<div class="content center_left">
 				<div class="contentbox">
-					<div class="contentbox_title"><h1>Register</h1></div>
-					<div class="contentbox_body">
+					<div class="contentbox_title">Register</div>
+					<div class="contentbox_body">					
+						<div class="statusmessage failure">Error: wrong CAPTCHA text</div>
+						<div class="statusmessage success">Account created successfully</div>
+						<div class="statusmessage neutral">Another kind of message</div>
 						<form method="post" action="register.php">
 							<label for="uname" class="login">Username:</label><br />
 							<input type="text" name="uname" id="uname" /> Minimum Length: 4 | Maximum Length: 14<br />
@@ -44,7 +46,7 @@
 							<label for="confpass" class="login">Confirm Password:</label><br />
 							<input type="password" id="confpass" name="confpass" /> Minimum Length: 4 | Maximum Length: 14<br />
 							<label for="email" class="login">Email:</label><br />
-							<input type="password" id="email" name="email" /> Valid E-Mail Address Required<br /><br />
+							<input type="text" id="email" name="email" /> Valid E-Mail Address Required<br /><br />
 							<select name="expansion">
 							  <option>Classic</option>
 							  <option>TBC</option>
@@ -59,7 +61,10 @@
 			</div>
 		</div>
 		<div class="footer">
-		TrinityManager v0.1
+		TrinityManager v0.1 <br />
+		<img src="images/logo-trinity.png" alt="php" class="footer"/>
+		<img src="images/logo-mysql.png" alt="mysql" class="footer"/>
+		<img src="images/logo-php.png" alt="php" class="footer"/>
 		</div>
 	</div>
 </body>
