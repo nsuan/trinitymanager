@@ -23,7 +23,7 @@ MENU
 *******************************/
 div.leftmenu{
 float: left;
-
+min-width: 160px;
 }
 div.menu{
 margin-bottom: 10px;
@@ -100,6 +100,9 @@ STYLE
 body{
 font-family: Verdana, Geneva, sans-serif;
 font-size: 10px;
+}
+img{
+border-style: none;
 }
 div.statusmessage{
 text-transform: uppercase;
