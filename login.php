@@ -21,8 +21,11 @@ else {
 		if ($e == 2) {
 			$error = $lang_login['incorrect_values'];
 		}
-        if ($e == 3) {
+        	if ($e == 3) {
 			$error = $lang_login['requires_verify'];
+		}	
+		if ($e == 4) {
+			$error = $lang_login['create_disabled'];
 		}
 	}
 
