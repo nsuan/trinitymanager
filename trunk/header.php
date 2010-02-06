@@ -31,54 +31,50 @@ require_once("libs/sql.php");
 $sqlr = new SQL;
 $sqlr->connect($realmd_host,$realmd_user,$realmd_pass,$realmd_db);
 
+$sqlt = new SQL;
+$sqlt->connect($trin_host,$trin_user,$trin_pass,$trin_db);
+
+if (isset($_SESSION['uname'])) {
+	$query = $sqlr->query("SELECT * FROM account WHERE username='".$_SESSION['uname']."'");
+	$userdata = mysql_fetch_array($query);
+}
+
+if (isset($_SESSION['realm'])) {
+	$userdata['realm'] = $_SESSION['realm'];
+}
+
 function redirect($location) {
      header("Location: ".$location);
 }
 
-?>
+function microtime_float ()
+{
+    list ($msec, $sec) = explode(' ', microtime());
+    $microtime = (float)$msec + (float)$sec;
+    return $microtime;
+}
+
+$start = microtime_float();
+$output = '';
+$output .= '
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $title; ?></title>
-<style>
-.surround {
-	background-color: #F1F3F5;
-	border: 1px solid #C0C0C0;
-	padding: 10px;
-}
+<title>'.$title.'</title>
 
-.loginbox {
-	background-color: #E6E6E6;
-	border: 1px solid #CCCACA;
-}
-
-.login {
-	padding: 5px;
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 10px;
-	font-weight: bold;
-}
-
-label.login {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 10px;
-	font-weight: bold;
-}
-body,td,th {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 10px;
-}
-#error {
-	color: #F00;
-	font-weight: bold;
-	font-size: 16px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
 </head>
 
 <body>
+	<div class="container">
+		<div class="header">
+		<div class="header_big">TrinityManager
+		<div class="header_small">Account Management System</div></div>
+		</div>
+		<div class="main">
+			<div class="leftmenu">';
+				include("navigation.php");
 
-
-
+			$output .= '</div>';
