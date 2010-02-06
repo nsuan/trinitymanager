@@ -3,7 +3,7 @@ STRUCTURE
 *******************************/
 div.container{
 margin: 0px auto;
-width: 800px;
+min-width: 800px;
 border: 1px solid #C0C0C0; 
 background-color: #F1F3F5;
 }
@@ -139,4 +139,8 @@ background-color:#bdbdbd;
 }
 .tabular_even{
 background-color:#c9c9c9;
+}
+.tabular_hi td{
+border-top: 1px dotted green;
+border-bottom: 1px dotted green;
 }
