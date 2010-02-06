@@ -40,6 +40,10 @@ if (isset($_GET['e'])) {
 	}
 }
 
+if (!$allow_creation) {
+	redirect("login.php?e=4");
+}
+
 if (isset($_POST['register'])) {
 	if (empty($_POST['uname']) || empty($_POST['pass']) || empty($_POST['confpass']) || empty($_POST['email'])) {
 	     redirect("register.php?e=1");

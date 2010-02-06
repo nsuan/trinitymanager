@@ -5,7 +5,8 @@
 $lang_login = array(
 'incorrect_values' => 'You supplied an invalid username or password!',
 'missing_fields' => 'One or more required fields were left blank!',
-'requires_verify' => 'Your account requires email verification. Please check your email for further instructions.'
+'requires_verify' => 'Your account requires email verification. Please check your email for further instructions.',
+'create_disabled' => 'Error: Account creation disabled!'
 );
 
 // REGISTER.PHP LANGUAGE DEFINITIONS
