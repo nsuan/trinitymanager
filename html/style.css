@@ -9,10 +9,7 @@ background-color: #F1F3F5;
 }
 div.header{
 background: #E6E6E6; 
-background-image:url(logo.png);
-background-repeat:no-repeat;
 border-bottom: 1px solid #C0C0C0; 
-padding-left:175px;
 }
 div.main{
 margin: 10px 10px 0px;
