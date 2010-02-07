@@ -9,10 +9,7 @@ background-color: #F1F3F5;
 }
 div.header{
 background: #E6E6E6; 
-background-image:url(logo.png);
-background-repeat:no-repeat;
 border-bottom: 1px solid #C0C0C0; 
-padding-left:175px;
 }
 div.main{
 margin: 10px 10px 0px;
@@ -180,4 +177,36 @@ border-bottom: 1px solid #E6E6E6 ;
 border: 1px solid silver;
 margin:-1px;
 padding: 10px;
+}
+.itembox {
+height:44px;
+width: 44px;
+}
+.itembox ins{
+height:36px;
+width: 36px;
+background-repeat:no-repeat;
+display:block;
+z-index:1;
+top:3px;
+left:3px;
+position:relative;
+}
+.itembox del{
+position:relative;
+top: -36px;
+background-repeat:no-repeat;
+display:block;
+z-index:10;
+background-image:url(images/icon_border_medium.png);
+height:44px;
+width:44px;
+}
+#char_preview {
+float:left;
+height:350px;
+width:240px;
+}
+#accounts_bottom{
+text-align: right;
 }
