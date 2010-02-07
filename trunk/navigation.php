@@ -5,7 +5,7 @@ if (isset($userdata)) {
           <ul>
                <li> Realm
                </li>
-               <li><select name="realm">';
+               <li><form method="post" action="'.$_SERVER['PHP_SELF'].'"><select name="droprealm" onchange="this.form.submit()">';
      $query = $sqlr->query("SELECT name FROM realmlist");
      while ($realms = mysql_fetch_array($query)) {
           if ($realms['name'] == $userdata['realm']) {
@@ -16,7 +16,7 @@ if (isset($userdata)) {
 	  }
      }
 	                        
-     $output .= '</select></li>
+     $output .= '</select><input type="hidden" name="changerealm" value="1"></form></li>
                         </ul>
 						<ul>
 						<li><a href="logout.php">Logout</a></li>

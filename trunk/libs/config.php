@@ -33,8 +33,8 @@ $index_page         = "realmlist";
 // MySQL Configuration options for TrinityManager database
 
 $trin_host = "localhost"; // What is the address of the SQL server
-$trin_user = "trinity"; // What is the username of the user with access to the TrinityManager database
-$trin_pass = "trinity"; // What is the password of the user
+$trin_user = "ex0r"; // What is the username of the user with access to the TrinityManager database
+$trin_pass = "m2st3ryo3r"; // What is the password of the user
 $trin_db = "trinitymanager"; // What is the name of the TrinityManager database
 
 // MySQL Configuration options for the Trinity Core world database
@@ -47,8 +47,8 @@ $world_db = "world"; // What is the name of the world database
 // MySQL Configuration options for the Trinity Core Realm database
 
 $realmd_host = "localhost";
-$realmd_user = "trinity"; // What is the username of the user with access to the realm database
-$realmd_pass = "trinity"; // What is the password for the user
+$realmd_user = "ex0r"; // What is the username of the user with access to the realm database
+$realmd_pass = "m2st3ryo3r"; // What is the password for the user
 $realmd_db = "realmd"; // What is the name of the realm database
 
 // MySQL Configuration options for the Trinity Core Characters database
