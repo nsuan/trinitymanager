@@ -3,13 +3,16 @@ STRUCTURE
 *******************************/
 div.container{
 margin: 0px auto;
-min-width: 800px;
+width: 800px;
 border: 1px solid #C0C0C0; 
 background-color: #F1F3F5;
 }
 div.header{
 background: #E6E6E6; 
+background-image:url(logo.png);
+background-repeat:no-repeat;
 border-bottom: 1px solid #C0C0C0; 
+padding-left:175px;
 }
 div.main{
 margin: 10px 10px 0px;
@@ -140,7 +143,41 @@ background-color:#bdbdbd;
 .tabular_even{
 background-color:#c9c9c9;
 }
-.tabular_hi td{
-border-top: 1px dotted green;
-border-bottom: 1px dotted green;
+.tabular_hi{
+background-color:#FFFFFF;
+}
+.tabular a{
+display:block;
+color:black;
+}
+#tabnav { 
+margin:-1px; 
+padding: 0; 
+}
+#tabnav  li {
+display: inline-block;
+border: 1px solid silver;
+border-bottom:none;
+
+}
+#tabnav li a{
+display:block;
+text-transform:uppercase;
+text-decoration:none;
+color:black;
+padding: 5px;
+background:#c9c9c9;
+}
+#tabnav li a:hover{
+background: #5e5e5e !important;
+color:white;
+}
+#tabnav-current{
+background: #E6E6E6 !important;
+border-bottom: 1px solid #E6E6E6 ;	
+}
+#tabcontent {
+border: 1px solid silver;
+margin:-1px;
+padding: 10px;
 }
