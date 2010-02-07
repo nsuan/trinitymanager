@@ -39,6 +39,10 @@ if (isset($_SESSION['uname'])) {
 	$userdata = mysql_fetch_array($query);
 }
 
+if (!empty($_POST['changerealm'])) {
+	$_SESSION['realm'] = $_POST['droprealm'];
+}
+
 if (isset($_SESSION['realm'])) {
 	$userdata['realm'] = $_SESSION['realm'];
 }
