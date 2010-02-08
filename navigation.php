@@ -23,7 +23,6 @@ if (isset($userdata)) {
 						</ul>
                     </div>';
 
-}
 $output .= '<div class="menu">
 		<ul>
 			<li> Main
@@ -31,9 +30,10 @@ $output .= '<div class="menu">
 					<li><a href="index.php">Home</a></li>
 					<li><a href="users.php">Accounts</a></li>
 					<li><a href="chars.php">Characters</a></li>
-					<li><a href="forums.php">Forums</a></li>
-					<li><a href="chat.php">Live Chat</a></li>
-				</ul>
+					<li><a href="forums.php">Forums</a></li>';
+					if ($enable_irc_chat) { $output .= '
+					<li><a href="chat.php">Live Chat</a></li>'; }
+$output .= '	</ul>
 			</li>
 			<li> Database
 				<ul>
@@ -57,5 +57,5 @@ $output .= '<div class="menu">
 		</ul>
 	</div>';
 
-
+}
 ?>

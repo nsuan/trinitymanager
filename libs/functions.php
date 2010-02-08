@@ -1,41 +1,41 @@
 <?php
 function realmstatus($realm) {
 
-	global $realm, $realmd_host, $realmd_user, $realmd_pass, $realmd_db;
+	global $realm, $realmd_host, $realmd_user, $realmd_pass, $realmd_db, $theme;
 	
 	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 	if (!socket_connect($socket,$realm['address'],$realm['port'])) {
-		return '<img src="images/offline.png">';
+		return '<img src="/themes/'.$theme.'/images/offline.png">';
 	}
 	else {
-		return '<img src="images/online.png">';
+		return '<img src="/themes/'.$theme.'/images/online.png">';
 	}
 	
 }
 
 function realmlocation() {
-	global $realm;
+	global $realm, $theme;
 	
 	if ($realm['timezone'] == 2) {
-		return '<img src="images/usflag.png" alt="North America">';
+		return '<img src="/themes/'.$theme.'/images/usflag.png" alt="North America">';
 	}
 	elseif ($realm['timezone'] == 3) {
-		return '<img src="images/britflag.png" alt="Oceanic">';
+		return '<img src="/themes/'.$theme.'/images/britflag.png" alt="Oceanic">';
 	}
 	elseif ($realm['timezone'] == 4) {
-		return '<img src="images/latinflag.png" alt="Latin America">';
+		return '<img src="/themes/'.$theme.'/images/latinflag.png" alt="Latin America">';
 	}
 	elseif ($realm['timezone'] == 6) {
-		return '<img src="images/koreaflag.png" alt="Korea">';
+		return '<img src="/themes/'.$theme.'/images/koreaflag.png" alt="Korea">';
 	}
 	elseif ($realm['timezone'] == 14) {
-		return '<img src="images/taiflag.png" alt="Thailand">';
+		return '<img src="/themes/'.$theme.'/images/taiflag.png" alt="Thailand">';
 	}
 	elseif ($realm['timezone'] == 16) {
-		return '<img src="images/chinaflag.png" alt="China">';
+		return '<img src="/themes/'.$theme.'/images/chinaflag.png" alt="China">';
 	}
 	else {
-		return '<img src="images/globalflag.png" alt="Other">';
+		return '<img src="/themes/'.$theme.'/images/globalflag.png" alt="Other">';
 	}
 }
 
