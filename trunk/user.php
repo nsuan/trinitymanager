@@ -27,7 +27,7 @@ $output .= '
 					<div class="contentbox_title">Accounts</div>
 					<div class="contentbox_body">
 						<div>
-							<form name="retrieve" action="delete_user.php" method="post">
+							<form name="retrieve" action="" method="post">
 							<fieldset>
 								Username: <input type="text" name="search_string"/>
 								<select name="order_by">
