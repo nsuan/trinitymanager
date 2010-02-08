@@ -28,7 +28,7 @@ $output .= '<div class="menu">
 			<li> Main
 				<ul>
 					<li><a href="index.php">Home</a></li>
-					<li><a href="users.php">Accounts</a></li>
+					<li><a href="user.php">Accounts</a></li>
 					<li><a href="chars.php">Characters</a></li>
 					<li><a href="forums.php">Forums</a></li>';
 					if ($enable_irc_chat) { $output .= '

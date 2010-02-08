@@ -28,6 +28,7 @@ if (isset($_COOKIE['theme'])) {
 }
 
 require_once("libs/sql.php");
+require_once("libs/functions.php");
 $sqlr = new SQL;
 $sqlr->connect($realmd_host,$realmd_user,$realmd_pass,$realmd_db);
 
