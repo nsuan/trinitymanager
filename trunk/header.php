@@ -21,7 +21,7 @@ require_once('lang/'. $lang.'.php');
 
 if (isset($_COOKIE['theme'])) {
 	if (is_dir('/themes/'.$_COOKIE['theme'])) {
-		if (is_file('/themes/'.$_COOKIE['theme'].'.css')) {
+		if (is_file('/themes/'.$_COOKIE['theme'].'/style.css')) {
 			$theme = $_SESSION['theme'];
 		}
 	}
@@ -68,7 +68,7 @@ $output .= '
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>'.$title.'</title>
 
-<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/themes/'.$theme.'/style.css" media="all" />
 </head>
 
 <body>
@@ -82,3 +82,5 @@ $output .= '
 				include("navigation.php");
 
 			$output .= '</div>';
+			
+			//if (isset($userdata)) { require_once("motd.php"); }
