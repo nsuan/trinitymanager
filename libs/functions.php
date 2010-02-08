@@ -56,6 +56,43 @@ function realmtype() {
 	}
 }
 
+function useronline($username) {
+	global $account, $theme;
+
+	if ($account['online'] = 0) {
+		return '<img src="/themes/'.$theme.'/images/online.png">';
+	}
+	else {
+		return '<img src="/themes/'.$theme.'/images/offline.png">';
+	}
+	
+}
+
+function userlocation($username) {
+	global $account, $theme;
+	if ($account['locale'] == 2) {
+		return '<img src="/themes/'.$theme.'/images/usflag.png" alt="North America">';
+	}
+	elseif ($account['locale'] == 3) {
+		return '<img src="/themes/'.$theme.'/images/britflag.png" alt="Oceanic">';
+	}
+	elseif ($account['locale'] == 4) {
+		return '<img src="/themes/'.$theme.'/images/latinflag.png" alt="Latin America">';
+	}
+	elseif ($account['locale'] == 6) {
+		return '<img src="/themes/'.$theme.'/images/koreaflag.png" alt="Korea">';
+	}
+	elseif ($account['locale'] == 14) {
+		return '<img src="/themes/'.$theme.'/images/taiflag.png" alt="Thailand">';
+	}
+	elseif ($account['locale'] == 16) {
+		return '<img src="/themes/'.$theme.'/images/chinaflag.png" alt="China">';
+	}
+	else {
+		return '<img src="/themes/'.$theme.'/images/globalflag.png" alt="Other">';
+	}
+	
+}
 function uptime() {
 	global $realm, $realmd_host, $realmd_user, $realmd_pass, $realmd_db;
 	

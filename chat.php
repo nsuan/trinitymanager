@@ -3,6 +3,11 @@ require_once("header.php");
 
 // All this info below must stay in tact. Do NOT edit or IRC Chat will be unfunctional!
 
+// Check if IRC Chat is enabled. If not, do not display the applet.
+
+if (!$enable_irc_chat) {
+	redirect("index.php");
+}
 $output .= '<div class="content center_left">
 				<div class="contentbox">
 					<div class="contentbox_title">Realm status </div>
