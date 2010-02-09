@@ -134,7 +134,7 @@ background-color:#5e5e5e;
 color: white;
 }
 .tabular  tr:hover{
-background-color: #E6E6E6;
+background-color: #E6E6E6 !important;
 border: 1px solid #CCCACA;
 }
 .tabular_odd {
@@ -142,9 +142,6 @@ background-color:#bdbdbd;
 }
 .tabular_even{
 background-color:#c9c9c9;
-}
-.tabular_hi{
-background-color:#FFFFFF;
 }
 .tabular a{
 display:block;
@@ -249,10 +246,6 @@ float:right;
 padding:10px;
 border: 1px solid silver;
 }
-#char_stats table {
-margin-top:3px;
-width:100%;
-}
 #char_health{
 border: 1px solid silver;
 text-align:center;
@@ -264,4 +257,48 @@ border: 1px solid silver;
 text-align:center;
 background: blue;
 color: white;
+}
+table.stats_table {
+width: 100%;
+
+text-align:left !important;
+}
+.stats_table tr:hover{
+background-color:white;
+border:1px solid red !important;
+padding:3px;
+margin: 3px;
+}
+.stats_outerbar{
+text-align:center;
+min-width:380px;
+border: 1px solid silver;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px
+}
+.stats_bar{
+height:14px;
+border:1px solid silver;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px
+}
+.bar_text{
+font-weight:bold;
+position:relative;
+top:-14px;
+height:0px;
+padding:0px;
+margin:0px;
+}
+.bar_good{
+background-color: #6bed51;
+}
+.bar_neutral{
+background-color: #ffee3d;
+}
+.bar_bad{
+background-color: #f42929;
+}
+.bar_skill{
+background-color: #bdbdbd;
 }
