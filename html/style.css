@@ -204,6 +204,7 @@ height:44px;
 width:44px;
 }
 #char_preview {
+width:300px;
 float:left;
 border: 1px solid silver;
 }
@@ -217,6 +218,7 @@ border:1px solid silver;
 margin:1px;
 padding: 5px;
 word-wrap: break-word;
+text-align:center;
 }
 #accounts_bottom{
 text-align: right;
@@ -250,4 +252,16 @@ border: 1px solid silver;
 #char_stats table {
 margin-top:3px;
 width:100%;
+}
+#char_health{
+border: 1px solid silver;
+text-align:center;
+background: green;
+color: white;
+}
+#char_mana{
+border: 1px solid silver;
+text-align:center;
+background: blue;
+color: white;
 }
