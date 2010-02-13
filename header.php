@@ -70,6 +70,8 @@ $output .= '
 <title>'.$title.'</title>
 
 <link rel="stylesheet" type="text/css" href="/themes/'.$theme.'/style.css" media="all" />
+	<script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
+
 </head>
 
 <body>
