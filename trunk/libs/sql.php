@@ -40,7 +40,7 @@ class SQL //MySQL
       ++$this->num_queries;
       return $this->query_result;
     } else {
-      die(error(mysql_error($this->link_id)));
+      die(mysql_error($this->link_id));
       return false;
     }
   }

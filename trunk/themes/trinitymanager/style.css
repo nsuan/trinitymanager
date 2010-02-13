@@ -97,6 +97,9 @@ background-color: #E6E6E6;
 /******************************
 STYLE
 *******************************/
+h3, h2, h1 {
+margin:0;
+}
 body{
 font-family: Verdana, Geneva, sans-serif;
 font-size: 10px;
@@ -131,7 +134,7 @@ background-color:#5e5e5e;
 color: white;
 }
 .tabular  tr:hover{
-background-color: #E6E6E6;
+background-color: #E6E6E6 !important;
 border: 1px solid #CCCACA;
 }
 .tabular_odd {
@@ -139,9 +142,6 @@ background-color:#bdbdbd;
 }
 .tabular_even{
 background-color:#c9c9c9;
-}
-.tabular_hi{
-background-color:#FFFFFF;
 }
 .tabular a{
 display:block;
@@ -187,7 +187,6 @@ height:36px;
 width: 36px;
 background-repeat:no-repeat;
 display:block;
-z-index:1;
 top:3px;
 left:3px;
 position:relative;
@@ -197,16 +196,109 @@ position:relative;
 top: -36px;
 background-repeat:no-repeat;
 display:block;
-z-index:10;
-background-image:url(images/icon_border_medium.png);
+background-image:url(/themes/trinitymanager/images/icon_border_medium.png);
 height:44px;
 width:44px;
 }
 #char_preview {
+width:300px;
 float:left;
-height:350px;
-width:240px;
+border: 1px solid silver;
+}
+#char_panel {
+border:1px solid silver; 
+width: 395px; 
+float:left;
+}
+#char_maininfo{
+border:1px solid silver;
+margin:1px;
+padding: 5px;
+word-wrap: break-word;
+text-align:center;
 }
 #accounts_bottom{
 text-align: right;
+}
+#item_mainhand{
+height:44px; 
+width:0px;
+padding-left:121px;
+}
+#item_offhand{
+height:0px;
+width: 0px;
+position:relative;
+left:170px;
+top:-44px
+}
+#item_ranged{
+height:0px;
+width: 0px;
+position:relative;
+left:219px;
+top:-44px;
+}
+#char_stats{
+max-width:198px;
+margin:0;
+float:right; 
+padding:10px;
+border: 1px solid silver;
+}
+#char_health{
+border: 1px solid silver;
+text-align:center;
+background: green;
+color: white;
+}
+#char_mana{
+border: 1px solid silver;
+text-align:center;
+background: blue;
+color: white;
+}
+table.stats_table {
+width: 100%;
+
+text-align:left !important;
+}
+.stats_table tr:hover{
+background-color:white;
+border:1px solid red !important;
+padding:3px;
+margin: 3px;
+}
+.stats_outerbar{
+text-align:center;
+min-width:380px;
+border: 1px solid silver;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px
+}
+.stats_bar{
+height:14px;
+border:1px solid silver;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px
+}
+.bar_text{
+font-weight:bold;
+position:relative;
+top:-14px;
+height:0px;
+padding:0px;
+margin:0px;
+}
+.bar_good{
+background-color: #6bed51;
+}
+.bar_neutral{
+background-color: #ffee3d;
+}
+.bar_bad{
+background-color: #f42929;
+}
+.bar_skill{
+background-color: #bdbdbd;
 }
