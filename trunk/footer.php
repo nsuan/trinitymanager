@@ -9,6 +9,7 @@ $output .= '<div class="footer">
 		<a href="http://www.php.net"><img src="images/logo-php.png" alt="php" class="footer"/></a>
 		<a href="http://www.mysql.com"><img src="images/logo-mysql.png" alt="mysql" class="footer"/></a>
 </div>
+</div>
 </body>
 </html>';
 ?>
