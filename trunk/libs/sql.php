@@ -19,18 +19,18 @@ class SQL //MySQL
     if ($this->link_id){
       if($db_name){
         if (@mysql_select_db($db_name, $this->link_id)) return $this->link_id;
-          else die(error($lang_global['err_sql_open_db']." ('$db_name')"));
+          else die($lang_global['err_sql_open_db']." ('$db_name')");
         if (!empty($use_names)) $this->query("SET NAMES '$use_names'");
       }
-    } else die(error($lang_global['err_sql_conn_db']));
+    } else die($lang_global['err_sql_conn_db'].$db_name);
   }
 
   function db($db_name) {
     global $lang_global;
     if ($this->link_id){
       if (@mysql_select_db($db_name, $this->link_id)) return $this->link_id;
-        else die(error($lang_global['err_sql_open_db']." ('$db_name')"));
-    } else die(error($lang_global['err_sql_conn_db']));
+        else die($lang_global['err_sql_open_db']." ('$db_name')");
+    } else die($lang_global['err_sql_conn_db']);
   }
 
   function query($sql){
@@ -40,7 +40,7 @@ class SQL //MySQL
       ++$this->num_queries;
       return $this->query_result;
     } else {
-      die(mysql_error($this->link_id));
+      die($this->link_id);
       return false;
     }
   }

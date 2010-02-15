@@ -15,6 +15,12 @@ if (isset($_GET['action'])) {
 	elseif ($page == "skills") {
 		require_once("skills.php");
 	}
+	elseif ($page == "talents") {
+		require_once("char_talents.php");
+	}
+	elseif ($page == "reputation") {
+		require_once("char_reputation.php");
+	}
 }
 
 else {

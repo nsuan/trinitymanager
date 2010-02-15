@@ -358,5 +358,13 @@ function getguild($guildid) {
 		}
 }
 
+function getfactionname($factionid) {
+		global $sqlt;
+		
+		$query = $sqlt->query("SELECT field_19 FROM dbc_faction WHERE id='$factionid'");
+		$res = $sqlt->fetch_assoc($query);
+			return $res['field_19'];
+}
+
 
 ?>
