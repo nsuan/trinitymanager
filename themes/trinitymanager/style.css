@@ -196,7 +196,7 @@ position:relative;
 top: -36px;
 background-repeat:no-repeat;
 display:block;
-background-image:url(/themes/trinitymanager/images/icon_border_medium.png);
+#background-image:url(/themes/trinitymanager/images/icon_border_medium.png);
 height:44px;
 width:44px;
 }
@@ -258,6 +258,28 @@ text-align:center;
 background: blue;
 color: white;
 }
+
+#char_rage{
+border: 1px solid silver;
+text-align:center;
+background: red;
+color: white;
+}
+
+#char_focus{
+border: 1px solid silver;
+text-align:center;
+background: orange;
+color: white;
+}
+
+#char_rune{
+border: 1px solid silver;
+text-align:center;
+background: purple;
+color: white;
+}
+
 table.stats_table {
 width: 100%;
 

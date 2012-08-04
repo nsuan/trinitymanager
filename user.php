@@ -14,7 +14,7 @@ else {
 
 if (!empty($_POST['search_string'])) {
 	$search_string = $sqlr->smartquote($_POST['search_string']);
-	$query = $sqlr->query("SELECT id,username,online,locale FROM account WHERE username LIKE '$search_string' ORDER BY username $order_dir");
+	$query = $sqlr->query("SELECT id,username,online,locale FROM account WHERE username LIKE '%$search_string%' ORDER BY username $order_dir");
 }
 
 else {
@@ -43,7 +43,7 @@ $output .= '
 							<tr><th>Name</th><th>Status</th><th>Location</th><th>Del</th><th>Check</th></tr>';
 while ($account = $sqlr->fetch_array($query)) {
 
-							$output .= '<tr class="tabular_odd"><td><a href="view_users.php?id='.$account['id'].'">'.$account['username'].'</a></td><td>'.useronline($account['username']).'</td><td>'.userlocation($account['username']).'</td><td><a href="delete_user.php?id='.$account['id'].'"><img src="/themes/'.$theme.'/images/delete-icon.png" alt="Delete"/></a></td><td><input type="checkbox" name="del" value="accounts['.$account['username'].']"/></td></tr>';
+							$output .= '<tr class="tabular_odd"><td><a href="view_users.php?id='.$account['id'].'">'.$account['username'].'</a></td><td>'.useronline($account['username']).'</td><td>'.userlocation($account['username']).'</td><td><a href="delete_user.php?id='.$account['id'].'"><img src="themes/'.$theme.'/images/delete-icon.png" alt="Delete"/></a></td><td><input type="checkbox" name="del" value="accounts['.$account['username'].']"/></td></tr>';
 					
 }
 $output .= '</table>

@@ -1,14 +1,15 @@
 <?php
+// http://wow.zamimg.com/images/wow/icons/large/inv_icon_name.jpg <-- Location to pull WoWhead icons 
 function realmstatus($realm) {
 
 	global $realm, $realmd_host, $realmd_user, $realmd_pass, $realmd_db, $theme;
 	
 	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 	if (!socket_connect($socket,$realm['address'],$realm['port'])) {
-		return '<img src="/themes/'.$theme.'/images/offline.png">';
+		return '<img src="themes/'.$theme.'/images/offline.png">';
 	}
 	else {
-		return '<img src="/themes/'.$theme.'/images/online.png">';
+		return '<img src="themes/'.$theme.'/images/online.png">';
 	}
 	
 }
@@ -17,25 +18,25 @@ function realmlocation() {
 	global $realm, $theme;
 	
 	if ($realm['timezone'] == 2) {
-		return '<img src="/themes/'.$theme.'/images/usflag.png" alt="North America">';
+		return '<img src="themes/'.$theme.'/images/usflag.png" alt="North America">';
 	}
 	elseif ($realm['timezone'] == 3) {
-		return '<img src="/themes/'.$theme.'/images/britflag.png" alt="Oceanic">';
+		return '<img src="themes/'.$theme.'/images/britflag.png" alt="Oceanic">';
 	}
 	elseif ($realm['timezone'] == 4) {
-		return '<img src="/themes/'.$theme.'/images/latinflag.png" alt="Latin America">';
+		return '<img src="themes/'.$theme.'/images/latinflag.png" alt="Latin America">';
 	}
 	elseif ($realm['timezone'] == 6) {
-		return '<img src="/themes/'.$theme.'/images/koreaflag.png" alt="Korea">';
+		return '<img src="themes/'.$theme.'/images/koreaflag.png" alt="Korea">';
 	}
 	elseif ($realm['timezone'] == 14) {
-		return '<img src="/themes/'.$theme.'/images/taiflag.png" alt="Thailand">';
+		return '<img src="themes/'.$theme.'/images/taiflag.png" alt="Thailand">';
 	}
 	elseif ($realm['timezone'] == 16) {
-		return '<img src="/themes/'.$theme.'/images/chinaflag.png" alt="China">';
+		return '<img src="themes/'.$theme.'/images/chinaflag.png" alt="China">';
 	}
 	else {
-		return '<img src="/themes/'.$theme.'/images/globalflag.png" alt="Other">';
+		return '<img src="themes/'.$theme.'/images/globalflag.png" alt="Other">';
 	}
 }
 
@@ -60,10 +61,10 @@ function useronline($username) {
 	global $account, $theme;
 
 	if ($account['online'] = 0) {
-		return '<img src="/themes/'.$theme.'/images/online.png">';
+		return '<img src="themes/'.$theme.'/images/online.png">';
 	}
 	else {
-		return '<img src="/themes/'.$theme.'/images/offline.png">';
+		return '<img src="themes/'.$theme.'/images/offline.png">';
 	}
 	
 }
@@ -71,25 +72,25 @@ function useronline($username) {
 function userlocation($username) {
 	global $account, $theme;
 	if ($account['locale'] == 2) {
-		return '<img src="/themes/'.$theme.'/images/usflag.png" alt="North America">';
+		return '<img src="themes/'.$theme.'/images/usflag.png" alt="North America">';
 	}
 	elseif ($account['locale'] == 3) {
-		return '<img src="/themes/'.$theme.'/images/britflag.png" alt="Oceanic">';
+		return '<img src="themes/'.$theme.'/images/britflag.png" alt="Oceanic">';
 	}
 	elseif ($account['locale'] == 4) {
-		return '<img src="/themes/'.$theme.'/images/latinflag.png" alt="Latin America">';
+		return '<img src="themes/'.$theme.'/images/latinflag.png" alt="Latin America">';
 	}
 	elseif ($account['locale'] == 6) {
-		return '<img src="/themes/'.$theme.'/images/koreaflag.png" alt="Korea">';
+		return '<img src="themes/'.$theme.'/images/koreaflag.png" alt="Korea">';
 	}
 	elseif ($account['locale'] == 14) {
-		return '<img src="/themes/'.$theme.'/images/taiflag.png" alt="Thailand">';
+		return '<img src="themes/'.$theme.'/images/taiflag.png" alt="Thailand">';
 	}
 	elseif ($account['locale'] == 16) {
-		return '<img src="/themes/'.$theme.'/images/chinaflag.png" alt="China">';
+		return '<img src="themes/'.$theme.'/images/chinaflag.png" alt="China">';
 	}
 	else {
-		return '<img src="/themes/'.$theme.'/images/globalflag.png" alt="Other">';
+		return '<img src="themes/'.$theme.'/images/globalflag.png" alt="Other">';
 	}
 	
 }
@@ -140,7 +141,7 @@ function charclass($charname) {
 	global $sqlc;
 	
 	$query = $sqlc->query("SELECT class FROM characters WHERE name='$charname'");
-	$res = $sqlc->fetch_assoc($query);
+	$res = $sqlc->fetch_array($query);
 	
 	$class = $res['class'];
 	
@@ -163,94 +164,92 @@ function charclass($charname) {
 function charhealth($charname) {
 	global $sqlc;
 	
-	$query = $sqlc->query("SELECT data FROM characters WHERE name='$charname'");
+	$query = $sqlc->query("SELECT health FROM characters WHERE name='$charname'");
 	$res = $sqlc->fetch_assoc($query);
-	
-	$character = explode(" ",$res['data']);
-	
-	return $character[31];
+		
+	return $res['health'];
 }
 
 function charmana($charname) {
 	global $sqlc;
 	
-	$query = $sqlc->query("SELECT data FROM characters WHERE name='$charname'");
+	$query = $sqlc->query("SELECT power1 FROM characters WHERE name='$charname'");
 	$res = $sqlc->fetch_assoc($query);
 	
-	$character = explode(" ",$res['data']);
+	return $res['power1'];
+}
+
+function charstat($charid,$stat) {
+	global $sqlc;
 	
-	return $character[32];
+	$query = $sqlc->query("SELECT `$stat` FROM character_stats WHERE guid='$charid'");
+	$res = $sqlc->fetch_assoc($query);
+	
+	if ($res == null) {
+		return 0;
+	}
+	
+	else{
+		return $res[$stat];
+	}
 }
 
 function getequip($charid,$slotid) {
-	global $sqlw, $sqlc, $sqlt, $icon_dir, $theme;
+	global $sqlc, $sqlt, $sqlw, $icon_dir, $theme, $download_icons, $realmid;
+
+		switch ($slotid) {
 	
-	$query = $sqlc->query("SELECT item_template FROM character_inventory WHERE guid='$charid' AND slot='$slotid'");
-	$res = $sqlc->fetch_assoc($query);
-	$itemid = $res['item_template'];
-	
-	if ($itemid == 0) {
-		return '<div class="itembox"><ins style="background-image: url(/themes/'.$theme.'/'.$icon_dir.'/inv_generic.png)"></ins><del></del></div>';
-	}
-	else {
-		$query = $sqlw->query("SELECT displayid FROM item_template WHERE entry='$itemid'");
-		$res = $sqlw->fetch_assoc($query);
-		$displayid = $res['displayid'];
+			case 15:
+				$slot = "item_mainhand";
+				break;
+			case 16:
+				$slot = "item_offhand";
+				break;
+			case 17:
+				$slot = "item_ranged";
+				break;
+			default:
+				$slot = "item";
+				break;
+		}
 		
-		if ($displayid == 0) {
-			return '<div class="itembox"><ins style="background-image: url(/themes/'.$theme.$icon_dir.'inv_generic.png)"></ins><del></del></div>';
+		$query = $sqlc->query("SELECT * FROM character_inventory WHERE guid=$charid AND slot=$slotid");
+		$result = $sqlc->fetch_array($query);
+		$item = $result['item'];
+
+		$query = $sqlc->query("SELECT itemEntry FROM item_instance WHERE guid=$item");
+		$result = $sqlc->fetch_array($query);
+		$itemid = $result['itemEntry'];
+
+		$queryw = $sqlw->query("SELECT displayid FROM item_template WHERE entry=$itemid");
+		$result = $sqlw->fetch_array($queryw);
+		$displayid = $result['displayid'];
+
+		$queryt = $sqlt->query("SELECT icon FROM dbc_itemdisplayinfo WHERE entry=$displayid");
+		$result = $sqlt->fetch_array($queryt);
+		$iicon = strtolower($result['icon']);
+		$icon = strtolower($result['icon'].".png");
+
+		if ($itemid == null) {
+			return '<div class="itembox" id="'.$slot.'"><ins style="background-image: url(themes/'.$theme.'/'.$icon_dir.'/medium/inv_generic.png);"></ins><del></del></div>';
 		}
 		else {
-			$query = $sqlt->query("SELECT name FROM dbc_itemdisplayinfo WHERE id='$displayid'");
-			$res = $sqlt->fetch_assoc($query);
-			$icon = $res['name'];
-			if (!$icon == 0) {
-				return '<div class="itembox"><a href="http://www.wowhead.com/?item='.$itemid.'"><ins style="background-image: url(http://static.wowhead.com/images/icons/medium/'.strtolower($icon).'.jpg);"></ins><del></del></a></div>';
+			if (file_exists("./themes/trinitymanager/images/icons/medium/".$icon)) {
+				return '<div class="itembox" id="'.$slot.'"><a href="http://w/?item='.$itemid.'"><ins style="background-image: url(themes/'.$theme.'/'.$icon_dir.'/medium/'.$icon.');"></ins><del></del></a></div>';
+			}
+
+			else {
+				if ($download_icons) {
+					//download_icon($icon);
+					echo "";
+				}
+				else {
+					return '<div class="itembox" id="'.$slot.'"><a href="http://www.wowhead.com/?item='.$itemid.'"><ins style="background-image: url(localhost/~trinitymanager/themes/trinitymanager/images/icons/medium/'.$iicon.'.png);"></ins><del></del></a></div>';
+				}
 			}
 		}
-	}
 }
-function getequiplower($charid,$slotid) {
-	global $sqlw, $sqlc, $sqlt, $theme, $icon_dir;
-	
-	$query = $sqlc->query("SELECT item_template FROM character_inventory WHERE guid='$charid' AND slot='$slotid'");
-	$res = $sqlc->fetch_assoc($query);
-	$itemid = $res['item_template'];
-	
-	switch ($slotid) {
-	
-	case 15:
-		$slot = "item_mainhand";
-		break;
-	case 16:
-		$slot = "item_offhand";
-		break;
-	case 17:
-		$slot = "item_ranged";
-		break;
-	}
-	
-	if ($itemid == 0) {
-		return '<div class="itembox" id="'.$slot.'"><ins style="background-image: url(/themes/'.$theme.$icon_dir.'inv_generic.png)"></ins><del></del></div>';
-	}
-	else {
-		$query = $sqlw->query("SELECT displayid FROM item_template WHERE entry='$itemid'");
-		$res = $sqlw->fetch_assoc($query);
-		$displayid = $res['displayid'];
-		
-		if ($displayid == 0) {
-			return '<div class="itembox" id="'.$slot.'"><ins style="background-image: url(/themes/'.$theme.$icon_dir.'inv_generic.png)"></ins><del></del></div>';
-		}
-		else {
-			$query = $sqlt->query("SELECT name FROM dbc_itemdisplayinfo WHERE id='$displayid'");
-			$res = $sqlt->fetch_assoc($query);
-			$icon = $res['name'];
-			if (!$icon == 0) {
-				return '<div class="itembox" id="'.$slot.'"><a href="http://www.wowhead.com/?item='.$itemid.'"><ins style="background-image: url(http://static.wowhead.com/images/icons/medium/'.strtolower($icon).'.jpg);"></ins><del></del></a></div>';
-			}
-		}
-	}
-}
+
 function charequip($charid,$slotid) {
 	global $sqlc;
 	
@@ -285,13 +284,13 @@ function itemicon($itemid) {
 	$icon = $res['name'];
 	
 	if ($get_web_icons) {
-		if (!file_exists('/themes/'.$theme.'/'.$icon_dir.'/'.$icon.'.jpg')) {
+		if (!file_exists('themes/'.$theme.'/'.$icon_dir.'/'.$icon.'.jpg')) {
 			download_icon($icon);
 		}
 	}
 	else {
-		if (file_exists('/themes/'.$theme.'/'.$icon_dir.'/'.$icon.'.jpg')) {
-			return '/themes/'.$theme.'/'.$icon_dir.'/'.strtolower($icon).'.jpg';
+		if (file_exists('themes/'.$theme.'/'.$icon_dir.'/'.$icon.'.jpg')) {
+			return 'themes/'.$theme.'/'.$icon_dir.'/'.strtolower($icon).'.jpg';
 		}
 		else {
 			return 'http://static.wowhead.com/images/icons/medium/'.strtolower($icon).'.jpg';
@@ -358,12 +357,100 @@ function getguild($guildid) {
 		}
 }
 
+function getguildbychar($charid) {
+	global $sqlc;
+	
+	$query = $sqlc->query("SELECT guildid FROM guild_member WHERE guid='$charid'");
+	$res = $sqlc->fetch_assoc($query);
+	
+	if ($res['guildid'] == 0) {
+		return '';
+	}
+	else {
+		return $res['guildid'];
+	}
+}
+
+function getcharlocation($charid) {
+	global $sqlc, $sqlt;
+	
+	$query = $sqlc->query("SELECT map FROM characters WHERE guid='$charid'");
+	$res = $sqlc->fetch_assoc($query);
+	
+	if ($res['map'] == 0) {
+		return '';
+	}
+	else {
+		$query = $sqlt->query("SELECT name FROM dbc_maps WHERE id='".$res['map']."'");
+		$res = $sqlt->fetch_assoc($query);
+		if ($res['name'] == null) {
+			return '';
+		}
+		else {
+			return $res['name'];
+		}
+	} 
+}
+
 function getfactionname($factionid) {
 		global $sqlt;
 		
-		$query = $sqlt->query("SELECT field_19 FROM dbc_faction WHERE id='$factionid'");
+		$query = $sqlt->query("SELECT field_23 FROM dbc_faction WHERE id='$factionid'");
 		$res = $sqlt->fetch_assoc($query);
-			return $res['field_19'];
+			return $res['field_23'];
+}
+
+function charbar($charname) {
+	global $sqlc;
+	
+	if (charclass($charname) == "Warrior") {
+		$query = $sqlc->query("SELECT power2 FROM characters WHERE name='$charname'");
+		$res = $sqlc->fetch_assoc($query);
+		
+		if ($res['power2'] == null) {
+			$level = 0;
+		}
+		else {
+			$level = $res['power2'];
+		}
+		return '<div id="char_rage">Rage: '.$level.'</div>';
+	}
+	elseif (charclass($charname) == "Hunter") {
+		$query = $sqlc->query("SELECT power3 FROM characters WHERE name='$charname'");
+		$res = $sqlc->fetch_assoc($query);
+		
+		if ($res['power3'] == null) {
+			$level = 0;
+		}
+		else {
+			$level = $res['power3'];
+		}
+		return '<div id="char_focus">Focus: '.$level.'</div>';
+	}
+	elseif (charclass($charname) == "Death Knight") {
+		$query = $sqlc->query("SELECT power7 FROM characters WHERE name='$charname'");
+		$res = $sqlc->fetch_assoc($query);
+		
+		if ($res['power7'] == null) {
+			$level = 0;
+		}
+		else {
+			$level = $res['power7'];
+		}
+		return '<div id="char_rune">Runic Power: '.$level.'</div>';
+	}
+	else {
+		$query = $sqlc->query("SELECT power1 FROM characters WHERE name='$charname'");
+		$res = $sqlc->fetch_assoc($query);
+		
+		if ($res['power1'] == null) {
+			$level = 0;
+		}
+		else {
+			$level = $res['power1'];
+		}
+		return '<div id="char_mana">Mana: '.$level.'</div>';
+	}
 }
 
 

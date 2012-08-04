@@ -2,6 +2,7 @@
 if (ini_get('session.auto_start'));
 else session_start();
 
+ini_set('display_errors','Off');
 if (file_exists('libs/config.php')) {
 	require_once('libs/config.php');
 }
@@ -42,10 +43,16 @@ if (isset($_SESSION['uname'])) {
 
 if (!empty($_POST['changerealm'])) {
 	$_SESSION['realm'] = $_POST['droprealm'];
+	$query = $sqlr->query("SELECT id FROM realmlist WHERE name='".$_SESSION['realm']."'");
+	$realmid = mysql_fetch_array($query);
+	$realmid = $realmid['id'];
 }
 
 if (isset($_SESSION['realm'])) {
 	$userdata['realm'] = $_SESSION['realm'];
+	$query = $sqlr->query("SELECT id FROM realmlist WHERE name='".$_SESSION['realm']."'");
+	$realmid = mysql_fetch_array($query);
+	$realmid = $realmid['id'];
 }
 
 function redirect($location) {
@@ -61,6 +68,7 @@ function microtime_float ()
 
 $start = microtime_float();
 $output = '';
+
 $output .= '
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -69,7 +77,7 @@ $output .= '
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>'.$title.'</title>
 
-<link rel="stylesheet" type="text/css" href="/themes/'.$theme.'/style.css" media="all" />
+<link rel="stylesheet" type="text/css" href="themes/'.$theme.'/style.css" media="all" />
 	<script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
 
 </head>
