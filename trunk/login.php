@@ -96,6 +96,11 @@ $output .= '			    </select> <br />
 							<input type="hidden" name="login" value="1" />
 							<input type="submit" value="Login" />
 						</form>
+						';
+						if (!empty($allow_creation)) {
+							$output.= '<a href="register.php">Create an account</a>';
+						}
+						$output .= '
 					</div>
 				</div>
 			</div>

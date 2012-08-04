@@ -1,7 +1,7 @@
 <?php
 require_once("header.php");
 
-if (!isset($userdata)) {
+if (empty($userdata)) {
 	redirect("login.php");
 }
 

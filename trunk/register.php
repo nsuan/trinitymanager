@@ -55,15 +55,20 @@ if (isset($_POST['register'])) {
 		$confpass = $sqlr->smartquote($_POST['confpass']);
 		$email = $sqlr->smartquote($_POST['email']);
 		$exp = $sqlr->smartquote($_POST['expansion']);
-		
-		if ($exp == "Classic") {
-			$expansion = 0;
+		$locale = $sqlr->smartquote($_POST['locale']);
+		if ($allow_expansion) {
+			if ($exp == "Classic") {
+				$expansion = 0;
+			}
+			if ($exp == "TBC") {
+				$expansion = 1;
+			}
+			if ($exp == "WOTLK") {
+				$expansion = 2;
+			}
 		}
-		if ($exp == "TBC") {
-			$expansion = 1;
-		}
-		if ($exp == "WOTLK") {
-			$expansion = 2;
+		else {
+			$expansion = $default_expansion;
 		}
 		
 		if (isset($_POST['captcha'])) { $captcha = $sqlr->smartquote($_POST['captcha']); }
@@ -91,6 +96,30 @@ if (isset($_POST['register'])) {
 				redirect("register.php?e=6");
 			}
 		}
+		
+		switch ($locale) {
+			case "North America":
+				$location = 2;
+				break;
+			case "Oceanic":
+				$location = 3;
+				break;
+			case "Latin America":
+				$location = 4;
+				break;
+			case "Korea":
+				$location = 6;
+				break;
+			case "Thailand":
+				$location = 14;
+				break;
+			case "China":
+				$location = 16;
+				break;
+			default:
+				$location = 18;
+				break;
+		}
 
 		$query = $sqlr->query("SELECT username FROM account WHERE username='$uname'");
 		if (mysql_num_rows($query) > 0) {
@@ -105,15 +134,15 @@ if (isset($_POST['register'])) {
 			if ($email_verify) {
 				$authkey = sha1($client_ip . time());
 				$password = sha1(strtoupper($uname) . ":" . strtoupper($pass));
-				$query = $sqlt->query("INSERT INTO account (username,sha_pass_hash,email, joindate,last_ip,failed_logins,locked,last_login,expansion,authkey)
-			  VALUES (UPPER('$uname'),'$password','$email',now(),'$client_ip','0','0',NULL,'$expansion','$authkey')");
+				$query = $sqlt->query("INSERT INTO account (username,sha_pass_hash,email, joindate,last_ip,failed_logins,locked,last_login,expansion,authkey,locale)
+			  VALUES (UPPER('$uname'),'$password','$email',now(),'$client_ip','0','0',NULL,'$expansion','$authkey','$location')");
 				
 				redirect("login.php?e=3");
 			}
 			else {
 				$password = sha1(strtoupper($uname) . ":" . strtoupper($pass));
-				$query = $sqlr->query("INSERT INTO account (username,sha_pass_hash,email, joindate,last_ip,failed_logins,locked,last_login,expansion)
-			  VALUES ('$uname','$password','$email',now(),'$client_ip','0','0',NULL,'$expansion')");
+				$query = $sqlr->query("INSERT INTO account (username,sha_pass_hash,email, joindate,last_ip,failed_logins,locked,last_login,expansion,locale)
+			  VALUES ('$uname','$password','$email',now(),'$client_ip','0','0',NULL,'$expansion','$location')");
 				if ($email_on_create) {
 				     send_email("create");
 				}
@@ -141,12 +170,26 @@ $output .= '	<form method="post" action="register.php">
 		<label for="confpass" class="login">Confirm Password:</label><br />
 		<input type="password" id="confpass" name="confpass" /> Minimum Length: 4 | Maximum Length: 14<br />
 		<label for="email" class="login">Email:</label><br />
-		<input type="text" id="email" name="email" /> Valid E-Mail Address Required<br /><br />
+		<input type="text" id="email" name="email" /> Valid E-Mail Address Required<br /><br />';
+		
+		if ($allow_expansion) {
+			$output .='
 		<select name="expansion">
 		  <option>Classic</option>
 		  <option>TBC</option>
 		  <option>WOTLK</option>
 		</select> Account Type<br /><br />';
+		}
+		$output .= '
+		<select name="locale">
+		  <option>North America</option>
+		  <option>Oceanic</option>
+		  <option>Latin America</option>
+		  <option>Korea</option>
+		  <option>Thailand</option>
+		  <option>China</option>
+		  <option>Other</option>
+		</select> Region<br /><br />';
 if ($require_captcha) {
 $output .= '	<input type="text" name="captcha" /> Captcha Image<br /><br />';
 }

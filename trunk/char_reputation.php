@@ -1,14 +1,9 @@
 <?php
 require_once("header.php");
 
-$charid = $sqlr->smartquote($_GET['id']);
-
-$query = $sqlr->query("SELECT id FROM realmlist WHERE name='".$userdata['realm']."'");
-$res = $sqlr->fetch_assoc($query);
-$realmid = $res['id'];
-
 $sqlc = new SQL;
-$sqlc->connect($characters_host[$realmid], $characters_user[$realmid], $characters_pass[$realmid], $characters_db[$realmid]);
+$sqlc->connect($characters_host[$realmid],$characters_user[$realmid],$characters_pass[$realmid],$characters_db[$realmid]);
+$charid = $sqlc->smartquote($_GET['id']);
 
 $sqlw = new SQL;
 $sqlw->connect($world_host[$realmid], $world_user[$realmid], $world_pass[$realmid], $world_db[$realmid]);
@@ -20,10 +15,10 @@ $output .= '<div class="content center_left">
 					<div class="contentbox_title">Character Info</div>
 					<div class="contentbox_body">
 						<ul id="tabnav">
-							<li><a href="">Character</a></li>
-							<li><a href="reputation" id="tabnav-current">Reputation</a></li>
-							<li><a href="skills">Skills</a></li>
-							<li><a href="talents">Talents</a></li>
+							<li><a href="characters.php?action=viewchar&id='.$charid.'">Character</a></li>
+							<li><a href="characters.php?action=reputation&id='.$charid.'" id="tabnav-current">Reputation</a></li>
+							<li><a href="characters.php?action=skills&id='.$charid.'">Skills</a></li>
+							<li><a href="characters.php?action=talents&id='.$charid.'">Talents</a></li>
 						</ul>
 						<div id="tabcontent">
 						<table class="stats_table">';
